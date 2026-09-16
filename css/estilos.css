@@ -367,3 +367,19 @@ footer nav li {
 footer a {
 	color: #D8D9CE;
 }
+.hero-imagen {
+    margin: 2rem 0;
+    padding: 0;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--accent, #B6742C);
+}
+
+.hero-imagen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: clamp(240px, 35vh, 480px);
+    object-fit: cover;
+}
