@@ -1,0 +1,369 @@
+/* =========================================================
+   Farmacias Chávez — hoja de estilos
+   Maquetación clásica (block / inline-block / table)
+   Fluida mediante clamp(), min(), max() y calc()
+   Sin @media, sin flexbox, sin grid, sin JavaScript
+   ========================================================= */
+
+:root {
+	--bg:      #EEF0E9;
+	--surface: #FFFFFF;
+	--ink:     #6f95aa;
+	--primary: #18404d;
+	--accent:  #0e344e;
+	--accent2: #4ad9fd;
+	--muted:   #5B6B5F;
+	--line:    rgba(27, 36, 29, 0.16);
+
+	--serif: 'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+	--sans:  -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ---------- Reinicio y modelo de caja ---------- */
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font-family: var(--sans);
+	line-height: 1.65;
+	font-size: clamp(1rem, 0.93rem + 0.3vw, 1.125rem);
+}
+
+img {
+	max-width: 100%;
+}
+
+a {
+	color: var(--primary);
+}
+
+/* ---------- Encabezado (display: table) ---------- */
+
+header {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	background: var(--primary);
+	color: #F4F3EC;
+	padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 4vw, 3rem);
+	border-bottom: clamp(3px, 0.4vw, 6px) solid var(--accent);
+}
+
+header > * {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.marca {
+	font-family: var(--serif);
+	font-size: clamp(1.2rem, 1rem + 1vw, 1.7rem);
+	margin: 0;
+	white-space: nowrap;
+}
+
+.cruz {
+	display: inline-block;
+	width: 0.7em;
+	height: 0.7em;
+	margin-right: 0.4em;
+	background: var(--accent);
+	vertical-align: middle;
+}
+
+header nav {
+	text-align: right;
+}
+
+header nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+header nav li {
+	display: inline-block;
+	margin-left: clamp(0.6rem, 1.6vw, 1.5rem);
+}
+
+header nav a {
+	color: #F4F3EC;
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	padding-bottom: 2px;
+	font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+}
+
+header nav a:hover,
+header nav a:focus {
+	border-bottom-color: var(--accent);
+}
+
+/* ---------- Estructura principal ---------- */
+
+main {
+	max-width: min(72rem, 92vw);
+	margin: 0 auto;
+	padding: clamp(1rem, 3vw, 2rem) 0;
+}
+
+section {
+	display: block;
+	padding: clamp(2rem, 5vw, 4rem) clamp(0.25rem, 2vw, 1rem);
+	border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+	border-bottom: none;
+}
+
+/* ---------- Tipografía ---------- */
+
+h1, h2, h3 {
+	font-family: var(--serif);
+	color: var(--primary);
+	font-weight: normal;
+	line-height: 1.2;
+}
+
+h1 {
+	font-size: clamp(1.9rem, 1.3rem + 3vw, 3.1rem);
+	max-width: 22ch;
+	margin-top: 0;
+}
+
+h2 {
+	font-size: clamp(1.4rem, 1.15rem + 1.3vw, 2rem);
+	margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+h2::before {
+	content: "";
+	display: inline-block;
+	width: 0.55em;
+	height: 0.55em;
+	background: var(--accent);
+	margin-right: 0.5em;
+	vertical-align: middle;
+}
+
+h3 {
+	font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+	margin-bottom: 0.35rem;
+	color: var(--ink);
+}
+
+p {
+	max-width: 68ch;
+	color: var(--ink);
+}
+
+#nosotros p,
+#inicio p {
+	color: var(--muted);
+}
+
+q {
+	font-style: italic;
+}
+
+mark {
+	background: var(--accent2);
+	color: #FFFFFF;
+	padding: 0 0.35ch;
+}
+
+abbr {
+	text-decoration: underline dotted;
+	text-decoration-color: var(--accent);
+	cursor: help;
+}
+
+data {
+	font-weight: bold;
+	color: var(--primary);
+}
+
+/* ---------- Listas de definición fluidas (servicios) ---------- */
+
+.lista-fluida {
+	margin: 0;
+}
+.lista-fluida {
+    margin: 0;
+    padding: 0;
+}
+
+/* El div contenedor es el que recibe el inline-block */
+.lista-fluida > div {
+    display: inline-block;
+    vertical-align: top;
+    width: clamp(280px, 30%, 360px); /* Ajusta a 3 columnas en pantallas anchas */
+    margin-right: 2.5%;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+.lista-fluida dt {
+    margin: 0 0 0.6rem 0;
+    padding-top: 0.6rem;
+    border-top: 2px solid var(--accent);
+    font-family: var(--serif);
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+    color: var(--primary);
+}
+
+.lista-fluida dd {
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(0.9rem, 0.87rem + 0.15vw, 0.98rem);
+    line-height: 1.5;
+}
+
+/* ---------- Horarios ---------- */
+
+.lista-horarios {
+	max-width: 40rem;
+	margin: 0 0 1.5rem 0;
+	border-top: 1px solid var(--line);
+}
+
+.lista-horarios dt,
+.lista-horarios dd {
+	display: inline-block;
+	vertical-align: baseline;
+	padding: 0.55rem 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.lista-horarios dt {
+	width: 55%;
+	font-family: var(--serif);
+	color: var(--primary);
+}
+
+.lista-horarios dd {
+	width: 44%;
+	margin: 0;
+	text-align: right;
+}
+
+/* ---------- Sucursales (tarjetas de flujo) ---------- */
+
+#sucursales article {
+	display: inline-block;
+	vertical-align: top;
+	width: clamp(250px, 46%, 420px);
+	margin: 0 3% clamp(1.5rem, 3vw, 2rem) 0;
+	padding: clamp(1rem, 2.5vw, 1.5rem);
+	background: var(--surface);
+	border: 1px solid var(--line);
+}
+
+#sucursales address {
+	font-style: normal;
+	color: var(--muted);
+}
+
+#sucursales p {
+	margin-bottom: 0;
+	font-size: 0.92rem;
+}
+
+/* ---------- Preguntas frecuentes (details / summary) ---------- */
+
+details {
+	display: block;
+	border-top: 1px solid var(--line);
+	padding: clamp(0.85rem, 2vw, 1.2rem) 0;
+}
+
+details:last-of-type {
+	border-bottom: 1px solid var(--line);
+}
+
+summary {
+	cursor: pointer;
+	font-family: var(--serif);
+	font-size: clamp(1rem, 0.95rem + 0.2vw, 1.15rem);
+	color: var(--primary);
+	list-style: none;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+summary::after {
+	content: " +";
+	color: var(--accent);
+}
+
+details[open] summary {
+	color: var(--accent2);
+}
+
+details[open] summary::after {
+	content: " –";
+}
+
+details p {
+	margin: 0.75rem 0 0 0;
+	color: var(--muted);
+}
+
+/* ---------- Contacto ---------- */
+
+#contacto address {
+	font-style: normal;
+	line-height: 1.9;
+}
+
+/* ---------- Pie de página (display: table) ---------- */
+
+footer {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	background: var(--ink);
+	color: #D8D9CE;
+	padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem);
+	font-size: 0.88rem;
+}
+
+footer > * {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+footer p {
+	margin: 0;
+	color: #D8D9CE;
+}
+
+footer nav {
+	text-align: right;
+}
+
+footer nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+footer nav li {
+	display: inline-block;
+	margin-left: 1rem;
+}
+
+footer a {
+	color: #D8D9CE;
+}
